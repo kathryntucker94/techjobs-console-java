@@ -83,7 +83,34 @@ public class JobData {
 
         return jobs;
     }
+/**A search function for searching ALL columns for a single search term. For example, a search with "java" will return
+ * results with "java" in any either the core competency or the position type.
+ * If the search term is present in more than one column, it will still only be presented once.
+ */
+    public static ArrayList<HashMap<String, String>> findByValue (String value){
+        loadData();
 
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for(HashMap<String, String> item : allJobs){
+            //for each key/value pair compare the value to the search term. If one of the values
+            // matches the search term, and it is not present in the jobs ArrayList
+            //then add the job to jobs.
+            for(Object key : item.keySet()){
+                String aValue = item.get(key);
+                if(aValue.contains(value)) {
+                    if (jobs.contains(item)) {
+
+                    } else {
+                        jobs.add(item);
+                    }
+                }
+            }
+        }
+
+        return jobs;
+    }
+    /**
     /**
      * Read in data from a CSV file and store it in a list
      */
