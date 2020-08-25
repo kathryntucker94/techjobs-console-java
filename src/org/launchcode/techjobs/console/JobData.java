@@ -97,8 +97,13 @@ public class JobData {
             // matches the search term, and it is not present in the jobs ArrayList
             //then add the job to jobs.
             for(Object key : item.keySet()){
-                String aValue = item.get(key);
-                if(aValue.contains(value)) {
+
+                String aJob = item.get(key);
+                String lowerCaseJob = aJob.toLowerCase();
+                String lowerCaseValue = value.toLowerCase();
+
+                if(lowerCaseJob.contains(lowerCaseValue)){
+
                     if (jobs.contains(item)) {
 
                     } else {
